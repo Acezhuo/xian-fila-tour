@@ -11,42 +11,28 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f5f5f5;
+      background: #020617;
       min-height: 100vh;
       overflow-x: hidden;
+      color: #fff;
     }
 
     /* ============================================================
        COVER PAGE
     ============================================================ */
     #cover {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: linear-gradient(160deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
       overflow: hidden;
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    #cover.hidden {
-      opacity: 0;
-      transform: scale(1.05);
-      pointer-events: none;
-    }
-    #cover .particles {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+    #cover.hidden { opacity: 0; transform: scale(1.05); pointer-events: none; }
+    #cover .particles { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
     #cover .particle {
-      position: absolute;
-      width: 4px; height: 4px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
+      position: absolute; width: 4px; height: 4px;
+      background: rgba(255,255,255,0.15); border-radius: 50%;
       animation: floatUp linear infinite;
     }
     @keyframes floatUp {
@@ -55,86 +41,53 @@
       90% { opacity: 1; }
       100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
-    #cover .arc {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(230,57,70,0.08);
-      pointer-events: none;
-    }
+    #cover .arc { position: absolute; border-radius: 50%; border: 1px solid rgba(230,57,70,0.08); pointer-events: none; }
     #cover .arc-1 { width: 800px; height: 800px; top: -200px; right: -200px; }
-    #cover .arc-2 { width: 600px; height: 600px; bottom: -150px; left: -150px; border-color: rgba(244,162,97,0.06); }
+    #cover .arc-2 { width: 600px; height: 600px; bottom: -150px; left: -150px; border-color: rgba(0,240,255,0.06); }
     #cover .arc-3 { width: 400px; height: 400px; bottom: 10%; right: 5%; border-color: rgba(255,255,255,0.04); }
     #cover .accent-line {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 4px;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
       background: linear-gradient(90deg, transparent, #e63946, #f4a261, #e63946, transparent);
     }
-    .cover-content {
-      position: relative; z-index: 2;
-      text-align: center; padding: 40px 24px;
-    }
+    .cover-content { position: relative; z-index: 2; text-align: center; padding: 40px 24px; }
     .cover-brand {
-      display: flex; align-items: center; justify-content: center; gap: 18px;
-      margin-bottom: 16px;
-      opacity: 0;
-      animation: fadeInDown 1s ease 0.3s forwards;
+      display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 16px;
+      opacity: 0; animation: fadeInDown 1s ease 0.3s forwards;
     }
     .cover-brand .logo-letter {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 64px; height: 64px;
-      background: #e63946; color: #fff;
-      font-size: 34px; font-weight: 900; font-style: italic;
-      border-radius: 6px;
+      width: 64px; height: 64px; background: #e63946; color: #fff;
+      font-size: 34px; font-weight: 900; font-style: italic; border-radius: 6px;
       box-shadow: 0 8px 32px rgba(230,57,70,0.3);
     }
-    .cover-brand .brand-name {
-      font-size: 42px; font-weight: 700; color: #fff;
-      letter-spacing: 8px;
-    }
+    .cover-brand .brand-name { font-size: 42px; font-weight: 700; color: #fff; letter-spacing: 8px; }
     .cover-title {
-      font-size: 28px; font-weight: 300;
-      color: rgba(255,255,255,0.8);
+      font-size: 28px; font-weight: 300; color: rgba(255,255,255,0.8);
       letter-spacing: 6px; margin-bottom: 8px;
-      opacity: 0;
-      animation: fadeInDown 1s ease 0.5s forwards;
+      opacity: 0; animation: fadeInDown 1s ease 0.5s forwards;
     }
     .cover-subtitle {
-      font-size: 15px; color: rgba(255,255,255,0.4);
-      letter-spacing: 3px; margin-bottom: 48px;
-      opacity: 0;
-      animation: fadeInDown 1s ease 0.6s forwards;
+      font-size: 15px; color: rgba(255,255,255,0.4); letter-spacing: 3px; margin-bottom: 48px;
+      opacity: 0; animation: fadeInDown 1s ease 0.6s forwards;
     }
     .cover-stats {
       display: inline-flex; align-items: center; gap: 28px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 100px; padding: 10px 32px;
-      margin-bottom: 48px;
-      opacity: 0;
-      animation: fadeInUp 1s ease 0.8s forwards;
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 100px;
+      padding: 10px 32px; margin-bottom: 48px;
+      opacity: 0; animation: fadeInUp 1s ease 0.8s forwards;
     }
-    .cover-stats .stat-item {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,0.8); font-size: 14px;
-    }
-    .cover-stats .stat-item .num {
-      font-size: 26px; font-weight: 700; color: #f4a261;
-    }
-    .cover-stats .divider {
-      width: 1px; height: 24px; background: rgba(255,255,255,0.1);
-    }
+    .cover-stats .stat-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px; }
+    .cover-stats .stat-item .num { font-size: 26px; font-weight: 700; color: #f4a261; }
+    .cover-stats .divider { width: 1px; height: 24px; background: rgba(255,255,255,0.1); }
     .btn-enter {
       display: inline-flex; align-items: center; gap: 12px;
-      padding: 16px 48px;
-      background: linear-gradient(135deg, #e63946, #c1121f);
-      color: #fff; font-size: 17px; font-weight: 500;
-      letter-spacing: 4px; border: none; border-radius: 60px;
-      cursor: pointer;
+      padding: 16px 48px; background: linear-gradient(135deg, #e63946, #c1121f);
+      color: #fff; font-size: 17px; font-weight: 500; letter-spacing: 4px;
+      border: none; border-radius: 60px; cursor: pointer;
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       box-shadow: 0 8px 32px rgba(230,57,70,0.35);
-      opacity: 0;
-      animation: fadeInUp 1s ease 1s forwards;
+      opacity: 0; animation: fadeInUp 1s ease 1s forwards;
       position: relative; overflow: hidden;
     }
     .btn-enter::before {
@@ -144,356 +97,269 @@
       transition: left 0.6s;
     }
     .btn-enter:hover::before { left: 100%; }
-    .btn-enter:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(230,57,70,0.45);
-    }
+    .btn-enter:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(230,57,70,0.45); }
     .btn-enter:active { transform: translateY(0) scale(0.98); }
     .btn-enter i { font-size: 16px; transition: transform 0.3s; }
     .btn-enter:hover i { transform: translateX(4px); }
     .cover-footer {
-      position: absolute; bottom: 24px; z-index: 2;
-      color: rgba(255,255,255,0.2); font-size: 12px; letter-spacing: 2px;
-      opacity: 0;
-      animation: fadeIn 1.5s ease 1.5s forwards;
+      position: absolute; bottom: 24px; z-index: 2; color: rgba(255,255,255,0.2);
+      font-size: 12px; letter-spacing: 2px;
+      opacity: 0; animation: fadeIn 1.5s ease 1.5s forwards;
     }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* ============================================================
-       MAIN PAGE — 分步流程
+       MAIN PAGE
     ============================================================ */
-    #mainPage {
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
+    #mainPage { opacity: 0; transition: opacity 0.6s ease; }
     #mainPage.show { opacity: 1; }
 
     .header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      padding: 48px 24px 40px;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute; top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 60%);
-      pointer-events: none;
+      background: linear-gradient(135deg, #0a0a1a, #16213e);
+      padding: 32px 24px 28px; text-align: center; position: relative; overflow: hidden;
     }
     .header::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #e63946, #f4a261, #e63946);
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, #00f0ff, #e63946, transparent);
     }
-    .header-brand {
-      display: flex; align-items: center; justify-content: center; gap: 16px;
-      margin-bottom: 12px;
-    }
+    .header-brand { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
     .header-brand .logo-letter {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px;
-      background: #e63946; color: #fff;
-      font-size: 28px; font-weight: 900; font-style: italic;
-      border-radius: 4px;
+      width: 40px; height: 40px; background: #e63946; color: #fff;
+      font-size: 22px; font-weight: 900; font-style: italic; border-radius: 4px;
     }
-    .header-brand .brand-name {
-      font-size: 32px; font-weight: 700; color: #fff;
-      letter-spacing: 6px;
-    }
-    .header-title {
-      font-size: 20px; font-weight: 300;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 4px; margin-bottom: 16px;
-    }
-    .header-stats {
-      display: inline-flex; align-items: center; gap: 24px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 100px; padding: 8px 28px; margin-top: 8px;
-    }
-    .header-stats .stat-item {
-      display: flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.9); font-size: 14px;
-    }
-    .header-stats .stat-item .num {
-      font-size: 22px; font-weight: 700; color: #f4a261;
-    }
-    .header-stats .divider { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+    .header-brand .brand-name { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 6px; }
+    .header-title { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.7); letter-spacing: 3px; }
 
     .confidential {
-      text-align: center; padding: 12px 16px;
-      background: #fff8e1; border-bottom: 1px solid #ffe082;
-      font-size: 13px; color: #bf8f00; letter-spacing: 1px;
+      text-align: center; padding: 10px 16px;
+      background: rgba(255,248,225,0.05); border-bottom: 1px solid rgba(255,224,130,0.1);
+      font-size: 12px; color: rgba(191,143,0,0.7); letter-spacing: 1px;
     }
-    .confidential i { margin-right: 6px; }
 
-    .main-content {
-      max-width: 900px; margin: 0 auto;
-      padding: 36px 20px 60px;
-    }
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 
     /* ===== Step indicator ===== */
     .step-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 28px;
     }
-    .step-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: #ccc;
-      transition: color 0.3s;
-    }
-    .step-item.active {
-      color: #e63946;
-    }
+    .step-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.3); transition: color 0.3s; }
+    .step-item.active { color: #00f0ff; }
     .step-item .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.3s;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3);
+      font-size: 12px; font-weight: 600; transition: all 0.3s;
     }
-    .step-item.active .step-num {
-      background: #e63946;
-      box-shadow: 0 2px 12px rgba(230,57,70,0.3);
-    }
-    .step-item .step-label {
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .step-line {
-      width: 60px;
-      height: 1px;
-      background: #e0e0e0;
-      margin: 0 12px;
-      transition: background 0.3s;
-    }
-    .step-line.active {
-      background: #e63946;
-    }
+    .step-item.active .step-num { background: #00f0ff; color: #020617; box-shadow: 0 2px 12px rgba(0,240,255,0.3); }
+    .step-item .step-label { font-weight: 500; letter-spacing: 1px; }
+    .step-line { width: 50px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 10px; transition: background 0.3s; }
+    .step-line.active { background: #00f0ff; }
 
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .section-label .bar {
-      width: 4px; height: 22px;
-      background: #e63946;
-      border-radius: 2px;
-    }
-    .section-label h2 {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1a1a2e;
-      letter-spacing: 2px;
-    }
+    .section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .section-label .bar { width: 4px; height: 20px; background: #00f0ff; border-radius: 2px; }
+    .section-label h2 { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 2px; }
 
-    /* ===== 页面切换 ===== */
-    .page-slot {
-      position: relative;
-    }
-    .page-panel {
-      transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .page-panel.hidden {
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
-    .page-panel.visible {
-      opacity: 1;
-      transform: translateY(0);
-      position: relative;
-    }
+    /* ===== Page panels ===== */
+    .page-slot { position: relative; }
+    .page-panel { transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .page-panel.hidden { opacity: 0; transform: translateY(20px); pointer-events: none; position: absolute; width: 100%; top: 0; left: 0; }
+    .page-panel.visible { opacity: 1; transform: translateY(0); position: relative; }
 
-    /* ===== 商圈选择卡片（大卡片） ===== */
-    .district-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    /* ===== District cards ===== */
+    .district-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .district-select-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      background: rgba(15,23,42,0.6); border: 1px solid rgba(30,41,59,0.8); border-radius: 16px;
+      overflow: hidden; cursor: pointer;
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border: 2px solid transparent;
     }
     .district-select-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
-      border-color: #e63946;
-    }
-    .district-select-card:active {
-      transform: translateY(-2px);
+      transform: translateY(-4px); border-color: #00f0ff;
+      box-shadow: 0 12px 40px rgba(0,240,255,0.08);
     }
     .district-select-card .card-top {
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      height: 100px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
     }
-    .district-select-card .card-top .big-icon {
-      font-size: 48px;
-      color: rgba(255,255,255,0.3);
-    }
-    .district-select-card .card-top .card-bg-pattern {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.08;
-    }
+    .district-select-card .card-top .big-icon { font-size: 40px; color: rgba(255,255,255,0.15); }
     .district-select-card .card-top .card-bg-pattern span {
-      position: absolute;
-      font-size: 120px;
-      font-weight: 900;
-      color: #fff;
-      top: -20px; right: -20px;
-      opacity: 0.06;
+      position: absolute; font-size: 100px; font-weight: 900; color: #fff;
+      top: -10px; right: -10px; opacity: 0.04;
     }
-    .card-top.red-bg {
-      background: linear-gradient(135deg, #e63946, #c1121f);
-    }
-    .card-top.blue-bg {
-      background: linear-gradient(135deg, #457b9d, #1d3557);
-    }
-
-    .district-select-card .card-body {
-      padding: 20px 22px 24px;
-    }
-    .district-select-card .card-body .card-name {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1a1a2e;
-      margin-bottom: 6px;
-    }
-    .district-select-card .card-body .card-desc {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 16px;
-    }
-    .district-select-card .card-body .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .card-top.red-gradient { background: linear-gradient(135deg, #1a0a0a, #2d0f0f); }
+    .card-top.blue-gradient { background: linear-gradient(135deg, #0a0a1a, #0f1a2d); }
+    .district-select-card .card-body { padding: 18px 20px 22px; }
+    .district-select-card .card-body .card-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .district-select-card .card-body .card-desc { font-size: 12px; color: rgba(148,163,184,0.7); margin-bottom: 12px; }
+    .district-select-card .card-body .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .district-select-card .card-body .card-tags .tag {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-size: 12px;
-      background: #f5f5f5;
-      color: #666;
-      border: 1px solid #eee;
+      display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px;
+      background: rgba(255,255,255,0.05); color: rgba(148,163,184,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* ===== 门店列表（点击商圈后进入） ===== */
-    .store-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-    }
+    /* ===== Store cards ===== */
+    .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
     .store-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 18px;
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #eee;
-      cursor: pointer;
-      transition: all 0.25s;
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(30,41,59,0.8); border-radius: 12px;
+      cursor: pointer; transition: all 0.25s;
     }
     .store-card:hover {
-      border-color: #e63946;
-      background: #fff5f5;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(230,57,70,0.1);
+      border-color: #00f0ff; background: rgba(0,240,255,0.04);
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.06);
     }
     .store-card .store-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
+      width: 42px; height: 42px; border-radius: 10px;
       background: linear-gradient(135deg, #e63946, #f4a261);
       display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 18px;
-      flex-shrink: 0;
+      color: #fff; font-size: 16px; flex-shrink: 0;
     }
-    .store-card .store-icon.kids {
-      background: linear-gradient(135deg, #457b9d, #1d3557);
-    }
+    .store-card .store-icon.kids { background: linear-gradient(135deg, #457b9d, #1d3557); }
     .store-card .store-info { flex: 1; min-width: 0; }
-    .store-card .store-info .store-name {
-      font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 4px;
-    }
+    .store-card .store-info .store-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 3px; }
     .store-card .store-info .store-type .badge {
-      display: inline-block; padding: 2px 10px;
-      background: #fff; border: 1px solid #ddd;
-      border-radius: 100px; font-size: 11px; color: #666;
+      display: inline-block; padding: 2px 8px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; font-size: 10px; color: rgba(148,163,184,0.8);
     }
-    .store-card .store-action { color: #ccc; font-size: 14px; transition: color 0.2s; }
-    .store-card:hover .store-action { color: #e63946; }
+    .store-card .store-action { color: rgba(255,255,255,0.15); font-size: 14px; transition: color 0.2s; }
+    .store-card:hover .store-action { color: #00f0ff; }
 
-    /* ===== 返回按钮 ===== */
+    /* ===== Back button ===== */
     .back-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #888;
-      font-size: 14px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      transition: color 0.2s;
-      padding: 4px 0;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(148,163,184,0.7); font-size: 13px; cursor: pointer;
+      margin-bottom: 16px; padding: 4px 0; transition: color 0.2s;
     }
-    .back-row:hover {
-      color: #e63946;
+    .back-row:hover { color: #00f0ff; }
+    .back-row i { font-size: 11px; transition: transform 0.2s; }
+    .back-row:hover i { transform: translateX(-3px); }
+
+    /* ============================================================
+       STORE DETAIL PAGE (Dark Tech Style)
+    ============================================================ */
+    #detailPage {
+      display: none; opacity: 0; transition: opacity 0.5s ease;
     }
-    .back-row i {
-      font-size: 12px;
-      transition: transform 0.2s;
+    #detailPage.show { display: block; opacity: 1; }
+
+    .detail-header {
+      background: linear-gradient(135deg, #0a0a1a, #0f1a2d);
+      padding: 20px 24px 16px; position: relative;
+      border-bottom: 1px solid rgba(30,41,59,0.6);
     }
-    .back-row:hover i {
-      transform: translateX(-3px);
+    .detail-header .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(148,163,184,0.6); font-size: 12px; cursor: pointer;
+      margin-bottom: 10px; transition: color 0.2s;
     }
+    .detail-header .back-btn:hover { color: #00f0ff; }
+    .detail-header .back-btn i { font-size: 10px; }
+    .detail-header .store-title {
+      font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .detail-header .store-sub {
+      font-size: 13px; color: rgba(148,163,184,0.6);
+    }
+
+    /* ===== Tab bar ===== */
+    .tab-bar {
+      display: flex; gap: 6px; padding: 14px 24px;
+      background: rgba(10,10,26,0.8); border-bottom: 1px solid rgba(30,41,59,0.4);
+      overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0; padding: 6px 16px; border-radius: 20px;
+      font-size: 12px; color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.4); border: 1px solid rgba(30,41,59,0.5);
+      cursor: pointer; transition: all 0.25s; white-space: nowrap;
+    }
+    .tab-btn:hover { border-color: rgba(0,240,255,0.3); color: rgba(255,255,255,0.7); }
+    .tab-btn.active {
+      background: rgba(0,240,255,0.08); border-color: #00f0ff; color: #00f0ff;
+    }
+
+    /* ===== Detail content ===== */
+    .detail-content {
+      max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ===== Detail cards ===== */
+    .detail-card {
+      background: rgba(15,23,42,0.5);
+      border: 1px solid rgba(30,41,59,0.5);
+      border-radius: 10px; padding: 20px 22px; margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+    .card-title {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .card-title .bar { width: 3px; height: 18px; background: #00f0ff; border-radius: 2px; }
+    .card-title h3 { font-size: 15px; font-weight: 600; color: #fff; letter-spacing: 1px; }
+    .card-sub {
+      font-size: 12px; color: rgba(148,163,184,0.5); margin-bottom: 8px;
+    }
+    .card-body { font-size: 14px; color: rgba(203,213,225,0.85); line-height: 1.8; }
+    .card-body strong { color: #fff; font-weight: 600; }
+    .card-body .highlight-num {
+      font-size: 56px; font-weight: 900; color: #00f0ff; line-height: 1;
+    }
+    .card-body .highlight-unit {
+      font-size: 22px; color: #f4a261; font-weight: 600; margin-left: 4px;
+    }
+
+    /* ===== Tags ===== */
+    .tag-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag-group .tg {
+      display: inline-block; padding: 4px 12px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px; font-size: 11px; color: rgba(148,163,184,0.8);
+    }
+
+    /* ===== Progress bars ===== */
+    .progress-group { margin-top: 10px; }
+    .progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .progress-row .label { font-size: 13px; color: rgba(203,213,225,0.8); width: 50px; flex-shrink: 0; }
+    .progress-row .pct { font-size: 13px; font-weight: 700; width: 45px; flex-shrink: 0; text-align: right; }
+    .progress-row .pct.cyan { color: #00f0ff; }
+    .progress-row .pct.orange { color: #f4a261; }
+    .progress-row .pct.green { color: #00e676; }
+    .progress-track {
+      flex: 1; height: 6px; background: rgba(255,255,255,0.06);
+      border-radius: 3px; overflow: hidden;
+    }
+    .progress-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+    .progress-fill.cyan { background: linear-gradient(90deg, #00f0ff, #00b4d8); }
+    .progress-fill.orange { background: linear-gradient(90deg, #f4a261, #e63946); }
+    .progress-fill.green { background: linear-gradient(90deg, #00e676, #00c853); }
+
+    /* ===== Brands ===== */
+    .brands-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .brands-list .bl {
+      display: inline-block; padding: 4px 12px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; font-size: 12px; color: rgba(203,213,225,0.8);
+    }
+
+    /* ===== 开发中占位 ===== */
+    .dev-placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 20px; color: rgba(148,163,184,0.4); gap: 12px;
+    }
+    .dev-placeholder i { font-size: 40px; }
+    .dev-placeholder span { font-size: 14px; letter-spacing: 2px; }
 
     /* ===== Footer ===== */
     .footer {
-      text-align: center; padding: 24px 16px 32px;
-      color: #aaa; font-size: 12px; letter-spacing: 1px;
-      border-top: 1px solid #eee; margin-top: 12px;
+      text-align: center; padding: 20px 16px 24px;
+      color: rgba(148,163,184,0.3); font-size: 11px; letter-spacing: 1px;
+      border-top: 1px solid rgba(30,41,59,0.4);
     }
 
     /* ===== Responsive ===== */
@@ -506,24 +372,23 @@
       .cover-stats .stat-item .num { font-size: 20px; }
       .btn-enter { padding: 14px 36px; font-size: 15px; }
 
-      .header { padding: 32px 16px 28px; }
-      .header-brand .logo-letter { width: 40px; height: 40px; font-size: 22px; }
-      .header-brand .brand-name { font-size: 24px; letter-spacing: 4px; }
-      .header-title { font-size: 16px; letter-spacing: 2px; }
-      .header-stats { padding: 6px 16px; gap: 12px; flex-wrap: wrap; justify-content: center; }
-      .header-stats .stat-item { font-size: 12px; }
-      .header-stats .stat-item .num { font-size: 18px; }
-      .main-content { padding: 24px 14px 40px; }
-
+      .header { padding: 24px 16px 20px; }
+      .header-brand .brand-name { font-size: 20px; letter-spacing: 4px; }
+      .header-title { font-size: 13px; }
+      .main-content { padding: 20px 14px 40px; }
       .district-grid { grid-template-columns: 1fr; gap: 14px; }
-      .district-select-card .card-top { height: 90px; }
-      .district-select-card .card-body { padding: 16px 18px 20px; }
-      .district-select-card .card-body .card-name { font-size: 17px; }
-
+      .district-select-card .card-top { height: 80px; }
+      .district-select-card .card-body { padding: 14px 16px 18px; }
       .store-grid { grid-template-columns: 1fr; }
-      .step-bar { gap: 0; }
       .step-line { width: 30px; margin: 0 6px; }
-      .step-item .step-label { font-size: 12px; }
+      .step-item .step-label { font-size: 11px; }
+      .tab-bar { padding: 10px 14px; gap: 4px; }
+      .tab-btn { font-size: 11px; padding: 5px 12px; }
+      .detail-header { padding: 14px 16px 12px; }
+      .detail-header .store-title { font-size: 17px; }
+      .detail-content { padding: 18px 14px 40px; }
+      .detail-card { padding: 16px; }
+      .card-body .highlight-num { font-size: 40px; }
     }
   </style>
 </head>
@@ -538,7 +403,6 @@
     <div class="arc arc-2"></div>
     <div class="arc arc-3"></div>
     <div class="accent-line"></div>
-
     <div class="cover-content">
       <div class="cover-brand">
         <span class="logo-letter">F</span>
@@ -546,25 +410,13 @@
       </div>
       <div class="cover-title">西北FILA 巡店看板</div>
       <div class="cover-subtitle">— 2026 零售巡店系统 · 测试版 —</div>
-
       <div class="cover-stats">
-        <span class="stat-item">
-          <i class="fa-regular fa-building" style="color:#f4a261"></i>
-          <span><span class="num">2</span> 大商圈</span>
-        </span>
+        <span class="stat-item"><i class="fa-regular fa-building" style="color:#f4a261"></i><span><span class="num">2</span> 大商圈</span></span>
         <span class="divider"></span>
-        <span class="stat-item">
-          <i class="fa-regular fa-store" style="color:#f4a261"></i>
-          <span><span class="num">5</span> 家门店</span>
-        </span>
+        <span class="stat-item"><i class="fa-regular fa-store" style="color:#f4a261"></i><span><span class="num">5</span> 家门店</span></span>
       </div>
-
-      <button class="btn-enter" onclick="enterMain()">
-        开启巡店
-        <i class="fa-solid fa-arrow-right"></i>
-      </button>
+      <button class="btn-enter" onclick="enterMain()">开启巡店<i class="fa-solid fa-arrow-right"></i></button>
     </div>
-
     <div class="cover-footer">内部资料，仅供巡店参考</div>
   </div>
 
@@ -572,63 +424,31 @@
        MAIN PAGE
   ============================================================ -->
   <div id="mainPage">
-
     <header class="header">
       <div class="header-brand">
         <span class="logo-letter">F</span>
         <span class="brand-name">FILA</span>
       </div>
       <div class="header-title">西北FILA 巡店看板-测试</div>
-      <div class="header-stats">
-        <span class="stat-item">
-          <i class="fa-regular fa-building" style="color:#f4a261"></i>
-          <span><span class="num">2</span> 大商圈</span>
-        </span>
-        <span class="divider"></span>
-        <span class="stat-item">
-          <i class="fa-regular fa-store" style="color:#f4a261"></i>
-          <span><span class="num">5</span> 家门店</span>
-        </span>
-      </div>
     </header>
+    <div class="confidential"><i class="fa-regular fa-lock"></i> 内部资料，仅供巡店参考，请勿外传或截图，谢谢配合</div>
 
-    <div class="confidential">
-      <i class="fa-regular fa-lock"></i>
-      内部资料，仅供巡店参考，请勿外传或截图，谢谢配合
-    </div>
-
-    <div class="main-content">
-
-      <!-- ===== 步骤指示器 ===== -->
+    <div class="main-content" id="mainContent">
+      <!-- 步骤指示器 -->
       <div class="step-bar">
-        <div class="step-item active" id="step1">
-          <span class="step-num">1</span>
-          <span class="step-label">选择商圈</span>
-        </div>
+        <div class="step-item active" id="step1"><span class="step-num">1</span><span class="step-label">选择商圈</span></div>
         <div class="step-line" id="stepLine"></div>
-        <div class="step-item" id="step2">
-          <span class="step-num">2</span>
-          <span class="step-label">选择门店</span>
-        </div>
+        <div class="step-item" id="step2"><span class="step-num">2</span><span class="step-label">选择门店</span></div>
       </div>
 
-      <!-- ===== 页面插槽 ===== -->
       <div class="page-slot">
-
-        <!-- ====== PANEL 1: 选择商圈 ====== -->
+        <!-- PANEL 1: 选择商圈 -->
         <div class="page-panel visible" id="panelDistricts">
-          <div class="section-label">
-            <span class="bar"></span>
-            <h2>选择商圈</h2>
-          </div>
-
+          <div class="section-label"><span class="bar"></span><h2>选择商圈</h2></div>
           <div class="district-grid">
-            <!-- 小寨商圈 -->
             <div class="district-select-card" onclick="selectDistrict('xiaozhai')">
-              <div class="card-top red-bg">
-                <div class="card-bg-pattern">
-                  <span>F</span>
-                </div>
+              <div class="card-top red-gradient">
+                <div class="card-bg-pattern"><span>F</span></div>
                 <i class="fa-regular fa-location-dot big-icon"></i>
               </div>
               <div class="card-body">
@@ -640,13 +460,9 @@
                 </div>
               </div>
             </div>
-
-            <!-- 南门商圈 -->
             <div class="district-select-card" onclick="selectDistrict('nanmen')">
-              <div class="card-top blue-bg">
-                <div class="card-bg-pattern">
-                  <span>F</span>
-                </div>
+              <div class="card-top blue-gradient">
+                <div class="card-bg-pattern"><span>F</span></div>
                 <i class="fa-regular fa-location-dot big-icon"></i>
               </div>
               <div class="card-body">
@@ -661,31 +477,21 @@
           </div>
         </div>
 
-        <!-- ====== PANEL 2: 选择门店（小寨商圈） ====== -->
+        <!-- PANEL 2: 选择门店 - 小寨 -->
         <div class="page-panel hidden" id="panelStoresXiaozhai">
-          <div class="back-row" onclick="backToDistricts()">
-            <i class="fa-solid fa-chevron-left"></i>
-            返回选择商圈
-          </div>
-          <div class="section-label">
-            <span class="bar"></span>
-            <h2>小寨商圈 · 门店列表</h2>
-          </div>
+          <div class="back-row" onclick="backToDistricts()"><i class="fa-solid fa-chevron-left"></i>返回选择商圈</div>
+          <div class="section-label"><span class="bar"></span><h2>小寨商圈 · 门店列表</h2></div>
           <div class="store-grid">
-            <div class="store-card" onclick="alert('巡店功能开发中')">
-              <div class="store-icon">
-                <i class="fa-regular fa-store"></i>
-              </div>
+            <div class="store-card" onclick="openStoreDetail('xiaozhai','yihao')">
+              <div class="store-icon"><i class="fa-regular fa-store"></i></div>
               <div class="store-info">
                 <div class="store-name">西安壹号店</div>
                 <div class="store-type"><span class="badge">店型A</span></div>
               </div>
               <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
             </div>
-            <div class="store-card" onclick="alert('巡店功能开发中')">
-              <div class="store-icon kids">
-                <i class="fa-regular fa-child"></i>
-              </div>
+            <div class="store-card" onclick="openStoreDetail('xiaozhai','saige-kids')">
+              <div class="store-icon kids"><i class="fa-regular fa-child"></i></div>
               <div class="store-info">
                 <div class="store-name">西安赛格kids店</div>
                 <div class="store-type"><span class="badge">店型B</span></div>
@@ -695,41 +501,29 @@
           </div>
         </div>
 
-        <!-- ====== PANEL 3: 选择门店（南门商圈） ====== -->
+        <!-- PANEL 3: 选择门店 - 南门 -->
         <div class="page-panel hidden" id="panelStoresNanmen">
-          <div class="back-row" onclick="backToDistricts()">
-            <i class="fa-solid fa-chevron-left"></i>
-            返回选择商圈
-          </div>
-          <div class="section-label">
-            <span class="bar"></span>
-            <h2>南门商圈 · 门店列表</h2>
-          </div>
+          <div class="back-row" onclick="backToDistricts()"><i class="fa-solid fa-chevron-left"></i>返回选择商圈</div>
+          <div class="section-label"><span class="bar"></span><h2>南门商圈 · 门店列表</h2></div>
           <div class="store-grid">
-            <div class="store-card" onclick="alert('巡店功能开发中')">
-              <div class="store-icon">
-                <i class="fa-regular fa-store"></i>
-              </div>
+            <div class="store-card" onclick="openStoreDetail('nanmen','wangfujing-c')">
+              <div class="store-icon"><i class="fa-regular fa-store"></i></div>
               <div class="store-info">
                 <div class="store-name">西安南门王府井</div>
                 <div class="store-type"><span class="badge">店型C</span></div>
               </div>
               <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
             </div>
-            <div class="store-card" onclick="alert('巡店功能开发中')">
-              <div class="store-icon kids">
-                <i class="fa-regular fa-child"></i>
-              </div>
+            <div class="store-card" onclick="openStoreDetail('nanmen','skp-kids')">
+              <div class="store-icon kids"><i class="fa-regular fa-child"></i></div>
               <div class="store-info">
                 <div class="store-name">西安skp kids店</div>
                 <div class="store-type"><span class="badge">店型B</span></div>
               </div>
               <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
             </div>
-            <div class="store-card" onclick="alert('巡店功能开发中')">
-              <div class="store-icon">
-                <i class="fa-regular fa-store"></i>
-              </div>
+            <div class="store-card" onclick="openStoreDetail('nanmen','wangfujing-d')">
+              <div class="store-icon"><i class="fa-regular fa-store"></i></div>
               <div class="store-info">
                 <div class="store-name">西安南门王府井</div>
                 <div class="store-type"><span class="badge">店型D</span></div>
@@ -738,17 +532,417 @@
             </div>
           </div>
         </div>
-
-      </div><!-- /page-slot -->
+      </div>
     </div>
 
-    <div class="footer">
-      FILA 2026 · 内部巡店系统 · 数据仅供内部参考
+    <div class="footer">FILA 2026 · 内部巡店系统 · 数据仅供内部参考</div>
+  </div>
+
+  <!-- ============================================================
+       STORE DETAIL PAGE
+  ============================================================ -->
+  <div id="detailPage">
+    <div class="detail-header">
+      <div class="back-btn" onclick="closeDetail()"><i class="fa-solid fa-chevron-left"></i> 返回门店列表</div>
+      <div class="store-title" id="detailStoreName">西安壹号店</div>
+      <div class="store-sub" id="detailStoreSub">小寨商圈 · 赛格国际购物中心</div>
+    </div>
+
+    <div class="tab-bar" id="tabBar">
+      <div class="tab-btn active" data-tab="tab1" onclick="switchTab('tab1')">01 商圈&amp;商场介绍</div>
+      <div class="tab-btn" data-tab="tab2" onclick="switchTab('tab2')">02 项目概况</div>
+      <div class="tab-btn" data-tab="tab3" onclick="switchTab('tab3')">03 区位交通</div>
+      <div class="tab-btn" data-tab="tab4" onclick="switchTab('tab4')">04 建筑规划</div>
+      <div class="tab-btn" data-tab="tab5" onclick="switchTab('tab5')">05 业态配比</div>
+      <div class="tab-btn" data-tab="tab6" onclick="switchTab('tab6')">06 重点品牌</div>
+      <div class="tab-btn" data-tab="tab7" onclick="switchTab('tab7')">07 楼层分布</div>
+      <div class="tab-btn" data-tab="tab8" onclick="switchTab('tab8')">08 经营数据</div>
+      <div class="tab-btn" data-tab="tab9" onclick="switchTab('tab9')">09 会员情况</div>
+      <div class="tab-btn" data-tab="tab10" onclick="switchTab('tab10')">10 竞品分析</div>
+      <div class="tab-btn" data-tab="tab11" onclick="switchTab('tab11')">11 近期亮点</div>
+    </div>
+
+    <div class="detail-content" id="detailContent">
+      <!-- 由JS动态渲染 -->
     </div>
   </div>
 
   <script>
-    // ===== 生成飘浮粒子 =====
+    // ============================================================
+    // DATA
+    // ============================================================
+    const STORE_DATA = {
+      xiaozhai: {
+        districtName: '小寨商圈',
+        stores: {
+          yihao: {
+            name: '西安壹号店',
+            type: '店型A',
+            mallName: '赛格国际购物中心',
+            location: '小寨十字东北角',
+            area: '20万㎡',
+            openDate: '2013年10月',
+            data: 'xiaozhai-saige'
+          },
+          'saige-kids': {
+            name: '西安赛格kids店',
+            type: '店型B',
+            mallName: '赛格国际购物中心',
+            location: '小寨十字东北角',
+            area: '20万㎡',
+            openDate: '2013年10月',
+            data: 'xiaozhai-saige'
+          }
+        }
+      },
+      nanmen: {
+        districtName: '南门商圈',
+        stores: {
+          'wangfujing-c': {
+            name: '西安南门王府井',
+            type: '店型C',
+            mallName: '西安王府井百货',
+            location: '南门永宁门',
+            area: '8.6万㎡',
+            openDate: '2014年9月',
+            data: 'nanmen-wangfujing'
+          },
+          'skp-kids': {
+            name: '西安skp kids店',
+            type: '店型B',
+            mallName: '西安SKP',
+            location: '南门广场东南角',
+            area: '24万㎡',
+            openDate: '2018年5月',
+            data: 'nanmen-skp'
+          },
+          'wangfujing-d': {
+            name: '西安南门王府井',
+            type: '店型D',
+            mallName: '西安王府井百货',
+            location: '南门永宁门',
+            area: '8.6万㎡',
+            openDate: '2014年9月',
+            data: 'nanmen-wangfujing'
+          }
+        }
+      }
+    };
+
+    const MALL_DETAILS = {
+      'xiaozhai-saige': {
+        intro: '西安赛格国际购物中心位于小寨十字东北角，是西安人气最旺的大型购物中心之一。总投资超20亿元，商业面积约20万㎡，2013年10月正式开业。拥有600+品牌商户，年销售额超百亿，位列全国购物中心前十、西北第一，被誉为"中国西部商业标杆"。',
+        features: [
+          '全球最大室内景观瀑布（411.3㎡）',
+          '亚洲最长飞天扶梯（50.3米，1层直达6层）',
+          '西部最大楼顶阳光停车场（1630个车位）',
+          '日均客流18万+，节假日超40万'
+        ],
+        overview: {
+          info: '华润赛格集团旗下标杆商业项目，国家五星购物中心',
+          highlight: '125',
+          highlightUnit: '亿',
+          highlightDesc: '2025年销售额，位列全国第9'
+        },
+        transport: {
+          lines: '地铁2号线、3号线小寨站直达',
+          bus: '小寨站20+条公交线路',
+          road: '长安南路与小寨路交汇处，城市主干道核心位置',
+          tags: ['腾讯', '中兴', '科技园', '高校环绕', '高端住宅']
+        },
+        architecture: '首创街区+Mall相结合开发模式，商业部分地下2层、地上7层，另有顶部4层空中停车场。室内采用双中庭设计，通过50.3米飞天扶梯纵向串联各层，配合411.3㎡室内瀑布景观，形成"游逛式"沉浸消费体验。',
+        mix: [
+          { label: '零售', pct: 60, color: 'cyan' },
+          { label: '餐饮', pct: 25, color: 'orange' },
+          { label: '体验', pct: 15, color: 'green' }
+        ],
+        brands: ['GUCCI', 'Prada', 'Burberry', 'FILA', 'Nike', 'Adidas', 'Lancôme', 'Estée Lauder', 'Apple', 'MUJI', 'Sephora', '海底捞', '喜茶', '星巴克臻选'],
+        groupBrands: ['FILA斐乐', '安踏', '迪桑特', '可隆'],
+        floors: [
+          'B2层：潮流女装、设计师品牌、潮牌集合',
+          'B1层：轻食餐饮、美妆护肤、生活超市',
+          '1-3F：国际名品、高端美妆、精品女装',
+          '4-5F：运动户外、数码科技、时尚男装',
+          '6F：家庭亲子、生活家居、儿童乐园',
+          '7-8F：特色餐饮、自营SAGA鲜食超市',
+          '9-11F：影院、KTV、美容健身、空中停车场'
+        ]
+      },
+      'nanmen-wangfujing': {
+        intro: '西安王府井百货（南门店）位于南门永宁门核心地段，前身为西安国贸春天广场，2014年9月王府井集团正式接手运营。经营面积约8.6万㎡，拥有超过180个品牌商铺，其中30%的品牌首次登陆西安市场。项目定位"时尚、前卫、高端"，是南门商圈高端零售的重要地标。',
+        features: [
+          '王府井集团布局西北的标杆项目',
+          '30%品牌首进西安市场',
+          '毗邻西安明城墙永宁门',
+          '高端化妆品专区覆盖20+国际一线品牌'
+        ],
+        overview: {
+          info: '王府井集团旗下高端百货旗舰店',
+          highlight: '8.6',
+          highlightUnit: '万㎡',
+          highlightDesc: '零售商业建筑面积，180+品牌入驻'
+        },
+        transport: {
+          lines: '地铁2号线永宁门站B口直达',
+          bus: '南门站10+条公交线路',
+          road: '长安北路与环城南路交汇处，紧邻南门广场',
+          tags: ['永宁门', '明城墙', '钟楼商圈', '旅游核心区', '高端住宅']
+        },
+        architecture: '由A、B、C三栋连接群楼组成，A栋为名品购物中心+甲级写字间，B栋为名品商场，C栋为写字楼。地下2层、地上6层，配备1200个停车位。整体采用现代商业综合体设计，外立面与古城墙风貌相呼应。',
+        mix: [
+          { label: '零售', pct: 67, color: 'cyan' },
+          { label: '餐饮', pct: 11, color: 'orange' },
+          { label: '休闲娱乐', pct: 22, color: 'green' }
+        ],
+        brands: ['GUCCI', 'PRADA', 'MIUMIU', 'BOTTEGA VENETA', 'SAINT LAURENT', 'BURBERRY', 'Ermenegildo Zegna', 'Bally', 'COACH', 'MCM', 'Dior', 'Lancôme', 'Estée Lauder'],
+        groupBrands: ['FILA斐乐', '安踏', '迪桑特', '可隆'],
+        floors: [
+          'B1层：美食广场、潮流服饰、Ole精品超市',
+          '1F北馆：GUCCI、PRADA、BURBERRY等国际名品',
+          '1F南馆：MCM、MIUMIU、COACH等轻奢品牌',
+          '2F：睿锦尚品集合店(150+国际品牌)、精品女装',
+          '3F：淑女装、女士箱包、儿童娱乐',
+          '4F：运动休闲、户外品牌',
+          '5F：婴幼服饰、儿童用品',
+          '6F：品牌餐饮、家庭影院、休闲会所'
+        ]
+      },
+      'nanmen-skp': {
+        intro: '西安SKP坐落于南门广场东南角，是北京华联集团旗下第二家SKP旗舰项目。总建筑面积约24万㎡，2018年5月开业，总投资超20亿元。拥有超过1300个国内外知名品牌入驻，其中Hermès、TOM FORD等600多个品牌首次进驻西安。2023年销售额近90亿元，是中国高端奢侈品百货的标杆之一。',
+        features: [
+          '中国高端奢侈品百货标杆品牌',
+          '1300+国内外知名品牌入驻',
+          '600+品牌首进西安',
+          '自营体验式书店SKP RENDEZ-VOUS',
+          '真冰滑冰场、SKP国际影城等高端配套'
+        ],
+        overview: {
+          info: '北京华联SKP旗舰项目，西北最高端奢侈品百货',
+          highlight: '90',
+          highlightUnit: '亿',
+          highlightDesc: '2023年销售额，位居全国前列'
+        },
+        transport: {
+          lines: '地铁2号线永宁门站直达',
+          bus: '南门站多条公交线路',
+          road: '长安北路261号，南门广场东南角',
+          tags: ['永宁门', '南门广场', '高端消费', '旅游地标', '商务区']
+        },
+        architecture: '总建面约24万㎡，共13层，涵盖化妆品、腕表、服饰、家电、高端超市、餐饮、影院等多种业态。商业空间融合现代奢华与艺术美学，设有SKP RENDEZ-VOUS书店、SKP国际影城、真冰滑冰场等高端体验业态。',
+        mix: [
+          { label: '奢侈品零售', pct: 70, color: 'cyan' },
+          { label: '餐饮', pct: 12, color: 'orange' },
+          { label: '体验配套', pct: 18, color: 'green' }
+        ],
+        brands: ['Hermès', 'CHANEL', 'LOUIS VUITTON', 'DIOR', 'GUCCI', 'PRADA', 'Celine', 'Loewe', 'Loro Piana', 'Van Cleef & Arpels', 'De Beers', 'Delvaux', 'TOM FORD', 'Cartier', 'Bvlgari'],
+        groupBrands: ['FILA斐乐', '安踏', '迪桑特', '可隆'],
+        floors: [
+          'B2层：高端超市、美食广场',
+          'B1层：潮流服饰、运动休闲',
+          '1F：国际顶级奢侈品（Hermès、CHANEL、LV、DIOR等）',
+          '2F：国际名品、精品女装',
+          '3F：高级女装、珠宝腕表',
+          '4F：时尚男装、绅士精品',
+          '5F：运动户外、儿童天地',
+          '6F：家居生活、SKP RENDEZ-VOUS书店',
+          '7-8F：特色餐饮、SKP国际影城',
+          '9F：真冰滑冰场、健身中心'
+        ]
+      }
+    };
+
+    // ============================================================
+    // NAVIGATION
+    // ============================================================
+    function enterMain() {
+      document.getElementById('cover').classList.add('hidden');
+      setTimeout(() => {
+        document.getElementById('cover').style.display = 'none';
+        document.getElementById('mainPage').classList.add('show');
+        window.scrollTo(0, 0);
+      }, 800);
+    }
+
+    function showPanel(panelId) {
+      document.querySelectorAll('.page-panel').forEach(p => {
+        p.classList.remove('visible'); p.classList.add('hidden');
+      });
+      const panel = document.getElementById(panelId);
+      panel.classList.remove('hidden'); panel.classList.add('visible');
+      window.scrollTo({ top: document.querySelector('.main-content').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function selectDistrict(district) {
+      const panelId = district === 'xiaozhai' ? 'panelStoresXiaozhai' : 'panelStoresNanmen';
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+      document.getElementById('stepLine').classList.add('active');
+      showPanel(panelId);
+    }
+
+    function backToDistricts() {
+      document.getElementById('step1').classList.add('active');
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('stepLine').classList.remove('active');
+      showPanel('panelDistricts');
+    }
+
+    // ============================================================
+    // STORE DETAIL
+    // ============================================================
+    let currentStoreId = '';
+
+    function openStoreDetail(districtId, storeId) {
+      currentStoreId = storeId;
+      const store = STORE_DATA[districtId].stores[storeId];
+      const dataKey = store.data;
+      const mall = MALL_DETAILS[dataKey];
+
+      // Set header
+      document.getElementById('detailStoreName').textContent = store.name;
+      document.getElementById('detailStoreSub').textContent = `${STORE_DATA[districtId].districtName} · ${store.mallName}`;
+
+      // Switch views
+      document.getElementById('mainPage').style.display = 'none';
+      document.getElementById('detailPage').style.display = 'block';
+      setTimeout(() => document.getElementById('detailPage').classList.add('show'), 50);
+      window.scrollTo(0, 0);
+
+      // Render tab content
+      renderTabContent(mall, store);
+      switchTab('tab1');
+    }
+
+    function closeDetail() {
+      document.getElementById('detailPage').classList.remove('show');
+      setTimeout(() => {
+        document.getElementById('detailPage').style.display = 'none';
+        document.getElementById('mainPage').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 300);
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function renderTabContent(mall, store) {
+      const container = document.getElementById('detailContent');
+
+      function card(title, body) {
+        return `<div class="detail-card"><div class="card-title"><span class="bar"></span><h3>${title}</h3></div><div class="card-body">${body}</div></div>`;
+      }
+
+      container.innerHTML = `
+        <!-- Tab 1: 商圈&商场介绍 -->
+        <div class="tab-content active" id="tab1">
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>${store.mallName}</h3></div>
+            <div class="card-sub">${store.mallName} · ${store.location}</div>
+            <div class="card-body"><p>${mall.intro}</p></div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>核心亮点</h3></div>
+            <div class="card-body">
+              ${mall.features.map(f => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><i class="fa-regular fa-star" style="color:#00f0ff;font-size:12px;"></i><span>${f}</span></div>`).join('')}
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>商场信息</h3></div>
+            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">商业面积</span><br><strong>${store.area}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">开业时间</span><br><strong>${store.openDate}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">所在商圈</span><br><strong>${mall.transport.tags[0] || '—'}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">门店类型</span><br><strong>${store.type}</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: 项目概况 -->
+        <div class="tab-content" id="tab2">
+          ${card('项目概况', `
+            <div class="card-sub">${mall.overview.info}</div>
+            <div style="margin:12px 0;">
+              <span class="highlight-num">${mall.overview.highlight}</span>
+              <span class="highlight-unit">${mall.overview.highlightUnit}</span>
+            </div>
+            <div style="font-size:13px;color:rgba(148,163,184,0.6);">${mall.overview.highlightDesc}</div>
+          `)}
+          ${card('基础信息', `
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">商业面积</span><br><strong>${store.area}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">开业时间</span><br><strong>${store.openDate}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">所在商场</span><br><strong>${store.mallName}</strong></div>
+              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">门店位置</span><br><strong>${store.location}</strong></div>
+            </div>
+          `)}
+        </div>
+
+        <!-- Tab 3: 区位交通 -->
+        <div class="tab-content" id="tab3">
+          ${card('区位交通', `
+            <div style="margin-bottom:10px;"><i class="fa-regular fa-train-subway-tunnel" style="color:#00f0ff;margin-right:8px;"></i><strong>地铁：</strong>${mall.transport.lines}</div>
+            <div style="margin-bottom:10px;"><i class="fa-regular fa-bus" style="color:#00f0ff;margin-right:8px;"></i><strong>公交：</strong>${mall.transport.bus}</div>
+            <div style="margin-bottom:10px;"><i class="fa-regular fa-road" style="color:#00f0ff;margin-right:8px;"></i><strong>道路：</strong>${mall.transport.road}</div>
+            <div class="tag-group">${mall.transport.tags.map(t => `<span class="tg">${t}</span>`).join('')}</div>
+          `)}
+        </div>
+
+        <!-- Tab 4: 建筑规划 -->
+        <div class="tab-content" id="tab4">
+          ${card('建筑规划', mall.architecture)}
+        </div>
+
+        <!-- Tab 5: 业态配比 -->
+        <div class="tab-content" id="tab5">
+          ${card('业态配比', `
+            <div class="progress-group">
+              ${mall.mix.map(m => `
+                <div class="progress-row">
+                  <span class="label">${m.label}</span>
+                  <div class="progress-track"><div class="progress-fill ${m.color}" style="width:${m.pct}%"></div></div>
+                  <span class="pct ${m.color}">${m.pct}%</span>
+                </div>
+              `).join('')}
+            </div>
+          `)}
+        </div>
+
+        <!-- Tab 6: 重点品牌 -->
+        <div class="tab-content" id="tab6">
+          ${card('场内重点品牌', `<div class="brands-list">${mall.brands.map(b => `<span class="bl">${b}</span>`).join('')}</div>`)}
+          ${card('集团入驻品牌', `<div class="brands-list">${mall.groupBrands.map(b => `<span class="bl">${b}</span>`).join('')}</div>`)}
+        </div>
+
+        <!-- Tab 7: 楼层分布 -->
+        <div class="tab-content" id="tab7">
+          ${card('楼层分布', `
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              ${mall.floors.map(f => `<div style="display:flex;align-items:center;gap:10px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid rgba(0,240,255,0.3);"><span style="font-size:12px;color:rgba(148,163,184,0.5);min-width:40px;">${f.split('：')[0]}</span><span>${f.split('：')[1] || f}</span></div>`).join('')}
+            </div>
+          `)}
+        </div>
+
+        <!-- Tab 8-11: 开发中 -->
+        ${['经营数据', '会员情况', '竞品分析', '近期亮点 & 提升方向'].map((title, i) => {
+          const tabId = `tab${i + 8}`;
+          return `<div class="tab-content" id="${tabId}">
+            <div class="detail-card">
+              <div class="card-title"><span class="bar"></span><h3>${title}</h3></div>
+              <div class="dev-placeholder">
+                <i class="fa-regular fa-gear"></i>
+                <span>功能开发中，敬请期待</span>
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+      `;
+    }
+
+    // ===== Init particles =====
     (function initParticles() {
       const container = document.getElementById('particles');
       for (let i = 0; i < 40; i++) {
@@ -762,47 +956,6 @@
         container.appendChild(p);
       }
     })();
-
-    // ===== 进入主页面 =====
-    function enterMain() {
-      const cover = document.getElementById('cover');
-      cover.classList.add('hidden');
-      setTimeout(() => {
-        cover.style.display = 'none';
-        document.getElementById('mainPage').classList.add('show');
-        window.scrollTo(0, 0);
-      }, 800);
-    }
-
-    // ===== 切换面板 =====
-    function showPanel(panelId) {
-      document.querySelectorAll('.page-panel').forEach(p => {
-        p.classList.remove('visible');
-        p.classList.add('hidden');
-      });
-      document.getElementById(panelId).classList.remove('hidden');
-      document.getElementById(panelId).classList.add('visible');
-      window.scrollTo({ top: document.querySelector('.main-content').offsetTop - 20, behavior: 'smooth' });
-    }
-
-    // ===== 选择商圈 =====
-    function selectDistrict(district) {
-      const panelId = district === 'xiaozhai' ? 'panelStoresXiaozhai' : 'panelStoresNanmen';
-      // 更新步骤指示器
-      document.getElementById('step1').classList.remove('active');
-      document.getElementById('step2').classList.add('active');
-      document.getElementById('stepLine').classList.add('active');
-      // 切换面板
-      showPanel(panelId);
-    }
-
-    // ===== 返回商圈选择 =====
-    function backToDistricts() {
-      document.getElementById('step1').classList.add('active');
-      document.getElementById('step2').classList.remove('active');
-      document.getElementById('stepLine').classList.remove('active');
-      showPanel('panelDistricts');
-    }
   </script>
 </body>
 </html>
