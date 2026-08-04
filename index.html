@@ -550,16 +550,10 @@
 
     <div class="tab-bar" id="tabBar">
       <div class="tab-btn active" data-tab="tab1" onclick="switchTab('tab1')">01 商圈&amp;商场介绍</div>
-      <div class="tab-btn" data-tab="tab2" onclick="switchTab('tab2')">02 项目概况</div>
-      <div class="tab-btn" data-tab="tab3" onclick="switchTab('tab3')">03 区位交通</div>
-      <div class="tab-btn" data-tab="tab4" onclick="switchTab('tab4')">04 建筑规划</div>
-      <div class="tab-btn" data-tab="tab5" onclick="switchTab('tab5')">05 业态配比</div>
-      <div class="tab-btn" data-tab="tab6" onclick="switchTab('tab6')">06 重点品牌</div>
-      <div class="tab-btn" data-tab="tab7" onclick="switchTab('tab7')">07 楼层分布</div>
-      <div class="tab-btn" data-tab="tab8" onclick="switchTab('tab8')">08 经营数据</div>
-      <div class="tab-btn" data-tab="tab9" onclick="switchTab('tab9')">09 会员情况</div>
-      <div class="tab-btn" data-tab="tab10" onclick="switchTab('tab10')">10 竞品分析</div>
-      <div class="tab-btn" data-tab="tab11" onclick="switchTab('tab11')">11 近期亮点</div>
+      <div class="tab-btn" data-tab="tab2" onclick="switchTab('tab2')">02 商品数据</div>
+      <div class="tab-btn" data-tab="tab3" onclick="switchTab('tab3')">03 客群画像</div>
+      <div class="tab-btn" data-tab="tab4" onclick="switchTab('tab4')">04 运营管理</div>
+      <div class="tab-btn" data-tab="tab5" onclick="switchTab('tab5')">05 库房管理</div>
     </div>
 
     <div class="detail-content" id="detailContent">
@@ -837,7 +831,7 @@
       }
 
       container.innerHTML = `
-        <!-- Tab 1: 商圈&商场介绍 -->
+        <!-- Tab 1: 商圈&商场介绍（合并1-7所有内容） -->
         <div class="tab-content active" id="tab1">
           <div class="detail-card">
             <div class="card-title"><span class="bar"></span><h3>${store.mallName}</h3></div>
@@ -851,84 +845,71 @@
             </div>
           </div>
           <div class="detail-card">
-            <div class="card-title"><span class="bar"></span><h3>商场信息</h3></div>
-            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">商业面积</span><br><strong>${store.area}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">开业时间</span><br><strong>${store.openDate}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">所在商圈</span><br><strong>${mall.transport.tags[0] || '—'}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">门店类型</span><br><strong>${store.type}</strong></div>
+            <div class="card-title"><span class="bar"></span><h3>项目概况</h3></div>
+            <div class="card-body">
+              <div class="card-sub">${mall.overview.info}</div>
+              <div style="margin:12px 0;">
+                <span class="highlight-num">${mall.overview.highlight}</span>
+                <span class="highlight-unit">${mall.overview.highlightUnit}</span>
+              </div>
+              <div style="font-size:13px;color:rgba(148,163,184,0.6);margin-bottom:12px;">${mall.overview.highlightDesc}</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;">
+                <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">商业面积</span><br><strong>${store.area}</strong></div>
+                <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">开业时间</span><br><strong>${store.openDate}</strong></div>
+                <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">所在商场</span><br><strong>${store.mallName}</strong></div>
+                <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">门店位置</span><br><strong>${store.location}</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>区位交通</h3></div>
+            <div class="card-body">
+              <div style="margin-bottom:10px;"><i class="fa-regular fa-train-subway-tunnel" style="color:#00f0ff;margin-right:8px;"></i><strong>地铁：</strong>${mall.transport.lines}</div>
+              <div style="margin-bottom:10px;"><i class="fa-regular fa-bus" style="color:#00f0ff;margin-right:8px;"></i><strong>公交：</strong>${mall.transport.bus}</div>
+              <div style="margin-bottom:10px;"><i class="fa-regular fa-road" style="color:#00f0ff;margin-right:8px;"></i><strong>道路：</strong>${mall.transport.road}</div>
+              <div class="tag-group">${mall.transport.tags.map(t => `<span class="tg">${t}</span>`).join('')}</div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>建筑规划</h3></div>
+            <div class="card-body">${mall.architecture}</div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>业态配比</h3></div>
+            <div class="card-body">
+              <div class="progress-group">
+                ${mall.mix.map(m => `
+                  <div class="progress-row">
+                    <span class="label">${m.label}</span>
+                    <div class="progress-track"><div class="progress-fill ${m.color}" style="width:${m.pct}%"></div></div>
+                    <span class="pct ${m.color}">${m.pct}%</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>重点品牌</h3></div>
+            <div class="card-body">
+              <div style="margin-bottom:10px;font-size:13px;color:rgba(148,163,184,0.6);">场内重点品牌</div>
+              <div class="brands-list" style="margin-bottom:14px;">${mall.brands.map(b => `<span class="bl">${b}</span>`).join('')}</div>
+              <div style="margin-bottom:10px;font-size:13px;color:rgba(148,163,184,0.6);">集团入驻品牌</div>
+              <div class="brands-list">${mall.groupBrands.map(b => `<span class="bl">${b}</span>`).join('')}</div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="card-title"><span class="bar"></span><h3>楼层分布</h3></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                ${mall.floors.map(f => `<div style="display:flex;align-items:center;gap:10px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid rgba(0,240,255,0.3);"><span style="font-size:12px;color:rgba(148,163,184,0.5);min-width:40px;">${f.split('：')[0]}</span><span>${f.split('：')[1] || f}</span></div>`).join('')}
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab 2: 项目概况 -->
-        <div class="tab-content" id="tab2">
-          ${card('项目概况', `
-            <div class="card-sub">${mall.overview.info}</div>
-            <div style="margin:12px 0;">
-              <span class="highlight-num">${mall.overview.highlight}</span>
-              <span class="highlight-unit">${mall.overview.highlightUnit}</span>
-            </div>
-            <div style="font-size:13px;color:rgba(148,163,184,0.6);">${mall.overview.highlightDesc}</div>
-          `)}
-          ${card('基础信息', `
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">商业面积</span><br><strong>${store.area}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">开业时间</span><br><strong>${store.openDate}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">所在商场</span><br><strong>${store.mallName}</strong></div>
-              <div><span style="color:rgba(148,163,184,0.5);font-size:12px;">门店位置</span><br><strong>${store.location}</strong></div>
-            </div>
-          `)}
-        </div>
-
-        <!-- Tab 3: 区位交通 -->
-        <div class="tab-content" id="tab3">
-          ${card('区位交通', `
-            <div style="margin-bottom:10px;"><i class="fa-regular fa-train-subway-tunnel" style="color:#00f0ff;margin-right:8px;"></i><strong>地铁：</strong>${mall.transport.lines}</div>
-            <div style="margin-bottom:10px;"><i class="fa-regular fa-bus" style="color:#00f0ff;margin-right:8px;"></i><strong>公交：</strong>${mall.transport.bus}</div>
-            <div style="margin-bottom:10px;"><i class="fa-regular fa-road" style="color:#00f0ff;margin-right:8px;"></i><strong>道路：</strong>${mall.transport.road}</div>
-            <div class="tag-group">${mall.transport.tags.map(t => `<span class="tg">${t}</span>`).join('')}</div>
-          `)}
-        </div>
-
-        <!-- Tab 4: 建筑规划 -->
-        <div class="tab-content" id="tab4">
-          ${card('建筑规划', mall.architecture)}
-        </div>
-
-        <!-- Tab 5: 业态配比 -->
-        <div class="tab-content" id="tab5">
-          ${card('业态配比', `
-            <div class="progress-group">
-              ${mall.mix.map(m => `
-                <div class="progress-row">
-                  <span class="label">${m.label}</span>
-                  <div class="progress-track"><div class="progress-fill ${m.color}" style="width:${m.pct}%"></div></div>
-                  <span class="pct ${m.color}">${m.pct}%</span>
-                </div>
-              `).join('')}
-            </div>
-          `)}
-        </div>
-
-        <!-- Tab 6: 重点品牌 -->
-        <div class="tab-content" id="tab6">
-          ${card('场内重点品牌', `<div class="brands-list">${mall.brands.map(b => `<span class="bl">${b}</span>`).join('')}</div>`)}
-          ${card('集团入驻品牌', `<div class="brands-list">${mall.groupBrands.map(b => `<span class="bl">${b}</span>`).join('')}</div>`)}
-        </div>
-
-        <!-- Tab 7: 楼层分布 -->
-        <div class="tab-content" id="tab7">
-          ${card('楼层分布', `
-            <div style="display:flex;flex-direction:column;gap:8px;">
-              ${mall.floors.map(f => `<div style="display:flex;align-items:center;gap:10px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid rgba(0,240,255,0.3);"><span style="font-size:12px;color:rgba(148,163,184,0.5);min-width:40px;">${f.split('：')[0]}</span><span>${f.split('：')[1] || f}</span></div>`).join('')}
-            </div>
-          `)}
-        </div>
-
-        <!-- Tab 8-11: 开发中 -->
-        ${['经营数据', '会员情况', '竞品分析', '近期亮点 & 提升方向'].map((title, i) => {
-          const tabId = `tab${i + 8}`;
+        <!-- Tab 2-5: 开发中 -->
+        ${['商品数据', '客群画像', '运营管理', '库房管理'].map((title, i) => {
+          const tabId = `tab${i + 2}`;
           return `<div class="tab-content" id="${tabId}">
             <div class="detail-card">
               <div class="card-title"><span class="bar"></span><h3>${title}</h3></div>
