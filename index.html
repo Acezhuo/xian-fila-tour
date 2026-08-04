@@ -13,9 +13,254 @@
       font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #f5f5f5;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* ===== Header ===== */
+    /* ============================================================
+       COVER PAGE
+    ============================================================ */
+    #cover {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+      overflow: hidden;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    #cover.hidden {
+      opacity: 0;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+
+    /* Background particles */
+    #cover .particles {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #cover .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Decorative arcs */
+    #cover .arc {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(230,57,70,0.08);
+      pointer-events: none;
+    }
+    #cover .arc-1 {
+      width: 800px; height: 800px;
+      top: -200px; right: -200px;
+    }
+    #cover .arc-2 {
+      width: 600px; height: 600px;
+      bottom: -150px; left: -150px;
+      border-color: rgba(244,162,97,0.06);
+    }
+    #cover .arc-3 {
+      width: 400px; height: 400px;
+      bottom: 10%; right: 5%;
+      border-color: rgba(255,255,255,0.04);
+    }
+
+    /* Red accent line */
+    #cover .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #e63946, #f4a261, #e63946, transparent);
+    }
+
+    /* Cover content */
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .cover-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.3s forwards;
+    }
+    .cover-brand .logo-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: #e63946;
+      color: #fff;
+      font-size: 34px;
+      font-weight: 900;
+      font-style: italic;
+      border-radius: 6px;
+      box-shadow: 0 8px 32px rgba(230,57,70,0.3);
+    }
+    .cover-brand .brand-name {
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 8px;
+    }
+
+    .cover-title {
+      font-size: 28px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 6px;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.5s forwards;
+    }
+    .cover-subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 3px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.6s forwards;
+    }
+
+    /* Stats on cover */
+    .cover-stats {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 10px 32px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.8s forwards;
+    }
+    .cover-stats .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    .cover-stats .stat-item .num {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f4a261;
+    }
+    .cover-stats .divider {
+      width: 1px;
+      height: 24px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Enter button */
+    .btn-enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #e63946, #c1121f);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 32px rgba(230,57,70,0.35);
+      opacity: 0;
+      animation: fadeInUp 1s ease 1s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-enter::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.6s;
+    }
+    .btn-enter:hover::before {
+      left: 100%;
+    }
+    .btn-enter:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(230,57,70,0.45);
+    }
+    .btn-enter:active {
+      transform: translateY(0) scale(0.98);
+    }
+    .btn-enter i {
+      font-size: 16px;
+      transition: transform 0.3s;
+    }
+    .btn-enter:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Cover footer */
+    .cover-footer {
+      position: absolute;
+      bottom: 24px;
+      z-index: 2;
+      color: rgba(255,255,255,0.2);
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease 1.5s forwards;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ============================================================
+       MAIN PAGE (原有布局优化)
+    ============================================================ */
+    #mainPage {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    #mainPage.show {
+      opacity: 1;
+    }
+
     .header {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       padding: 48px 24px 40px;
@@ -146,7 +391,7 @@
       letter-spacing: 2px;
     }
 
-    /* =====商圈卡片 ===== */
+    /* ===== 商圈卡片 ===== */
     .district-card {
       background: #fff;
       border-radius: 16px;
@@ -308,6 +553,14 @@
 
     /* ===== Responsive ===== */
     @media (max-width: 640px) {
+      .cover-brand .logo-letter { width: 50px; height: 50px; font-size: 26px; }
+      .cover-brand .brand-name { font-size: 30px; letter-spacing: 4px; }
+      .cover-title { font-size: 20px; letter-spacing: 3px; }
+      .cover-stats { padding: 8px 18px; gap: 14px; flex-wrap: wrap; justify-content: center; }
+      .cover-stats .stat-item { font-size: 12px; }
+      .cover-stats .stat-item .num { font-size: 20px; }
+      .btn-enter { padding: 14px 36px; font-size: 15px; }
+
       .header { padding: 32px 16px 28px; }
       .header-brand .logo-letter { width: 40px; height: 40px; font-size: 22px; }
       .header-brand .brand-name { font-size: 24px; letter-spacing: 4px; }
@@ -324,161 +577,225 @@
 </head>
 <body>
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="header">
-    <div class="header-brand">
-      <span class="logo-letter">F</span>
-      <span class="brand-name">FILA</span>
-    </div>
-    <div class="header-title">西北FILA 巡店看板-测试</div>
-    <div class="header-stats">
-      <span class="stat-item">
-        <i class="fa-regular fa-building" style="color:#f4a261"></i>
-        <span><span class="num">2</span> 大商圈</span>
-      </span>
-      <span class="divider"></span>
-      <span class="stat-item">
-        <i class="fa-regular fa-store" style="color:#f4a261"></i>
-        <span><span class="num">5</span> 家门店</span>
-      </span>
-    </div>
-  </header>
+  <!-- ============================================================
+       COVER PAGE
+  ============================================================ -->
+  <div id="cover">
+    <div class="particles" id="particles"></div>
+    <div class="arc arc-1"></div>
+    <div class="arc arc-2"></div>
+    <div class="arc arc-3"></div>
+    <div class="accent-line"></div>
 
-  <!-- ==================== CONFIDENTIAL ==================== -->
-  <div class="confidential">
-    <i class="fa-regular fa-lock"></i>
-    内部资料，仅供巡店参考，请勿外传或截图，谢谢配合
+    <div class="cover-content">
+      <div class="cover-brand">
+        <span class="logo-letter">F</span>
+        <span class="brand-name">FILA</span>
+      </div>
+      <div class="cover-title">西北FILA 巡店看板</div>
+      <div class="cover-subtitle">— 2026 零售巡店系统 · 测试版 —</div>
+
+      <div class="cover-stats">
+        <span class="stat-item">
+          <i class="fa-regular fa-building" style="color:#f4a261"></i>
+          <span><span class="num">2</span> 大商圈</span>
+        </span>
+        <span class="divider"></span>
+        <span class="stat-item">
+          <i class="fa-regular fa-store" style="color:#f4a261"></i>
+          <span><span class="num">5</span> 家门店</span>
+        </span>
+      </div>
+
+      <button class="btn-enter" onclick="enterMain()">
+        开启巡店
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="cover-footer">内部资料，仅供巡店参考</div>
   </div>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
-  <div class="main-content">
+  <!-- ============================================================
+       MAIN PAGE
+  ============================================================ -->
+  <div id="mainPage">
 
-    <div class="section-label">
-      <span class="bar"></span>
-      <h2>选择门店</h2>
+    <header class="header">
+      <div class="header-brand">
+        <span class="logo-letter">F</span>
+        <span class="brand-name">FILA</span>
+      </div>
+      <div class="header-title">西北FILA 巡店看板-测试</div>
+      <div class="header-stats">
+        <span class="stat-item">
+          <i class="fa-regular fa-building" style="color:#f4a261"></i>
+          <span><span class="num">2</span> 大商圈</span>
+        </span>
+        <span class="divider"></span>
+        <span class="stat-item">
+          <i class="fa-regular fa-store" style="color:#f4a261"></i>
+          <span><span class="num">5</span> 家门店</span>
+        </span>
+      </div>
+    </header>
+
+    <div class="confidential">
+      <i class="fa-regular fa-lock"></i>
+      内部资料，仅供巡店参考，请勿外传或截图，谢谢配合
     </div>
 
-    <!-- ===== 小寨商圈 ===== -->
-    <div class="district-card">
-      <div class="district-header" onclick="toggleDistrict(this)">
-        <div class="district-header-left">
-          <div class="icon-wrap red">
-            <i class="fa-regular fa-location-dot"></i>
+    <div class="main-content">
+      <div class="section-label">
+        <span class="bar"></span>
+        <h2>选择门店</h2>
+      </div>
+
+      <!-- 小寨商圈 -->
+      <div class="district-card">
+        <div class="district-header" onclick="toggleDistrict(this)">
+          <div class="district-header-left">
+            <div class="icon-wrap red">
+              <i class="fa-regular fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="name">小寨商圈</span>
+              <span class="count">2 家门店</span>
+            </div>
           </div>
-          <div>
-            <span class="name">小寨商圈</span>
-            <span class="count">2 家门店</span>
+          <div class="toggle rotated">
+            <i class="fa-solid fa-chevron-down"></i>
           </div>
         </div>
-        <div class="toggle rotated">
-          <i class="fa-solid fa-chevron-down"></i>
+        <div class="store-list">
+          <div class="store-card" onclick="alert('巡店功能开发中')">
+            <div class="store-icon">
+              <i class="fa-regular fa-store"></i>
+            </div>
+            <div class="store-info">
+              <div class="store-name">西安壹号店</div>
+              <div class="store-type">
+                <span class="badge">店型A</span>
+              </div>
+            </div>
+            <div class="store-action">
+              <i class="fa-regular fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="store-card" onclick="alert('巡店功能开发中')">
+            <div class="store-icon kids">
+              <i class="fa-regular fa-child"></i>
+            </div>
+            <div class="store-info">
+              <div class="store-name">西安赛格kids店</div>
+              <div class="store-type">
+                <span class="badge">店型B</span>
+              </div>
+            </div>
+            <div class="store-action">
+              <i class="fa-regular fa-arrow-right"></i>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="store-list">
-        <div class="store-card">
-          <div class="store-icon">
-            <i class="fa-regular fa-store"></i>
-          </div>
-          <div class="store-info">
-            <div class="store-name">西安壹号店</div>
-            <div class="store-type">
-              <span class="badge">店型A</span>
+
+      <!-- 南门商圈 -->
+      <div class="district-card">
+        <div class="district-header" onclick="toggleDistrict(this)">
+          <div class="district-header-left">
+            <div class="icon-wrap blue">
+              <i class="fa-regular fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="name">南门商圈</span>
+              <span class="count">3 家门店</span>
             </div>
           </div>
-          <div class="store-action">
-            <i class="fa-regular fa-arrow-right"></i>
+          <div class="toggle rotated">
+            <i class="fa-solid fa-chevron-down"></i>
           </div>
         </div>
-
-        <div class="store-card">
-          <div class="store-icon kids">
-            <i class="fa-regular fa-child"></i>
-          </div>
-          <div class="store-info">
-            <div class="store-name">西安赛格kids店</div>
-            <div class="store-type">
-              <span class="badge">店型B</span>
+        <div class="store-list">
+          <div class="store-card" onclick="alert('巡店功能开发中')">
+            <div class="store-icon">
+              <i class="fa-regular fa-store"></i>
+            </div>
+            <div class="store-info">
+              <div class="store-name">西安南门王府井</div>
+              <div class="store-type">
+                <span class="badge">店型C</span>
+              </div>
+            </div>
+            <div class="store-action">
+              <i class="fa-regular fa-arrow-right"></i>
             </div>
           </div>
-          <div class="store-action">
-            <i class="fa-regular fa-arrow-right"></i>
+          <div class="store-card" onclick="alert('巡店功能开发中')">
+            <div class="store-icon kids">
+              <i class="fa-regular fa-child"></i>
+            </div>
+            <div class="store-info">
+              <div class="store-name">西安skp kids店</div>
+              <div class="store-type">
+                <span class="badge">店型B</span>
+              </div>
+            </div>
+            <div class="store-action">
+              <i class="fa-regular fa-arrow-right"></i>
+            </div>
+          </div>
+          <div class="store-card" onclick="alert('巡店功能开发中')">
+            <div class="store-icon">
+              <i class="fa-regular fa-store"></i>
+            </div>
+            <div class="store-info">
+              <div class="store-name">西安南门王府井</div>
+              <div class="store-type">
+                <span class="badge">店型D</span>
+              </div>
+            </div>
+            <div class="store-action">
+              <i class="fa-regular fa-arrow-right"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ===== 南门商圈 ===== -->
-    <div class="district-card">
-      <div class="district-header" onclick="toggleDistrict(this)">
-        <div class="district-header-left">
-          <div class="icon-wrap blue">
-            <i class="fa-regular fa-location-dot"></i>
-          </div>
-          <div>
-            <span class="name">南门商圈</span>
-            <span class="count">3 家门店</span>
-          </div>
-        </div>
-        <div class="toggle rotated">
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-      </div>
-      <div class="store-list">
-        <div class="store-card">
-          <div class="store-icon">
-            <i class="fa-regular fa-store"></i>
-          </div>
-          <div class="store-info">
-            <div class="store-name">西安南门王府井</div>
-            <div class="store-type">
-              <span class="badge">店型C</span>
-            </div>
-          </div>
-          <div class="store-action">
-            <i class="fa-regular fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <div class="store-card">
-          <div class="store-icon kids">
-            <i class="fa-regular fa-child"></i>
-          </div>
-          <div class="store-info">
-            <div class="store-name">西安skp kids店</div>
-            <div class="store-type">
-              <span class="badge">店型B</span>
-            </div>
-          </div>
-          <div class="store-action">
-            <i class="fa-regular fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <div class="store-card">
-          <div class="store-icon">
-            <i class="fa-regular fa-store"></i>
-          </div>
-          <div class="store-info">
-            <div class="store-name">西安南门王府井</div>
-            <div class="store-type">
-              <span class="badge">店型D</span>
-            </div>
-          </div>
-          <div class="store-action">
-            <i class="fa-regular fa-arrow-right"></i>
-          </div>
-        </div>
-      </div>
+    <div class="footer">
+      FILA 2026 · 内部巡店系统 · 数据仅供内部参考
     </div>
-
-  </div>
-
-  <!-- ==================== FOOTER ==================== -->
-  <div class="footer">
-    FILA 2026 · 内部巡店系统 · 数据仅供内部参考
   </div>
 
   <script>
+    // ===== Generate floating particles =====
+    (function initParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+        p.style.animationDuration = (12 + Math.random() * 20) + 's';
+        p.style.animationDelay = (Math.random() * 15) + 's';
+        p.style.opacity = 0.1 + Math.random() * 0.3;
+        container.appendChild(p);
+      }
+    })();
+
+    // ===== Enter main page =====
+    function enterMain() {
+      const cover = document.getElementById('cover');
+      cover.classList.add('hidden');
+      setTimeout(() => {
+        cover.style.display = 'none';
+        document.getElementById('mainPage').classList.add('show');
+        // 滚动到顶部
+        window.scrollTo(0, 0);
+      }, 800);
+    }
+
+    // ===== Toggle district =====
     function toggleDistrict(el) {
       const list = el.nextElementSibling;
       const toggle = el.querySelector('.toggle');
