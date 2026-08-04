@@ -404,9 +404,9 @@
       <div class="cover-title">西北零售运营大区 巡店看板</div>
       <div class="cover-subtitle">— 2026 零售巡店系统 · 测试版 —</div>
       <div class="cover-stats">
-        <span class="stat-item"><i class="fa-regular fa-building" style="color:#f4a261"></i><span><span class="num">2</span> 大商圈</span></span>
+        <span class="stat-item"><i class="fa-regular fa-building" style="color:#f4a261"></i><span><span class="num">3</span> 大商圈</span></span>
         <span class="divider"></span>
-        <span class="stat-item"><i class="fa-regular fa-store" style="color:#f4a261"></i><span><span class="num">5</span> 家门店</span></span>
+        <span class="stat-item"><i class="fa-regular fa-store" style="color:#f4a261"></i><span><span class="num">7</span> 家门店</span></span>
       </div>
       <button class="btn-enter" onclick="enterMain()">开启巡店<i class="fa-solid fa-arrow-right"></i></button>
     </div>
@@ -459,7 +459,7 @@
               </div>
               <div class="card-body">
                 <div class="card-name">南门商圈</div>
-                <div class="card-desc">西安高端商圈 · 3 家门店</div>
+                <div class="card-desc">西安高端商圈 · 2 家门店</div>
                 <div class="card-tags">
                   <span class="tag">西安南门王府井</span>
                   <span class="tag">西安skp kids店</span>
@@ -468,6 +468,23 @@
             </div>
           </div>
         </div>
+
+        <!-- ===== 钟楼商圈 ===== -->
+        <div class="district-select-card" onclick="selectDistrict('zhonglou')">
+          <div class="card-top red-gradient">
+            <div class="card-bg-pattern"><span>F</span></div>
+            <i class="fa-regular fa-location-dot big-icon"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-name">钟楼商圈</div>
+            <div class="card-desc">西安中心商圈 · 3 家门店</div>
+            <div class="card-tags">
+              <span class="tag">西安开元店</span>
+              <span class="tag">西安开元kids店</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
         <!-- PANEL 2: 选择门店 - 小寨 -->
         <div class="page-panel hidden" id="panelStoresXiaozhai">
@@ -514,17 +531,40 @@
               </div>
               <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
             </div>
-            <div class="store-card" onclick="openStoreDetail('nanmen','wangfujing-d')">
+          </div>
+        </div>
+
+        <!-- PANEL 4: 选择门店 - 钟楼 -->
+        <div class="page-panel hidden" id="panelStoresZhonglou">
+          <div class="back-row" onclick="backToDistricts()"><i class="fa-solid fa-chevron-left"></i>返回选择商圈</div>
+          <div class="section-label"><span class="bar"></span><h2>钟楼商圈 · 门店列表</h2></div>
+          <div class="store-grid">
+            <div class="store-card" onclick="openStoreDetail('zhonglou','kaiyuan')">
               <div class="store-icon"><i class="fa-regular fa-store"></i></div>
               <div class="store-info">
-                <div class="store-name">西安南门王府井</div>
-                <div class="store-type"><span class="badge">店型D</span></div>
+                <div class="store-name">西安开元店</div>
+                <div class="store-type"><span class="badge">店型A</span></div>
+              </div>
+              <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
+            </div>
+            <div class="store-card" onclick="openStoreDetail('zhonglou','kaiyuan-kids')">
+              <div class="store-icon kids"><i class="fa-regular fa-child"></i></div>
+              <div class="store-info">
+                <div class="store-name">西安开元kids店</div>
+                <div class="store-type"><span class="badge">店型B</span></div>
+              </div>
+              <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
+            </div>
+            <div class="store-card" onclick="openStoreDetail('zhonglou','kaiyuan-chaopai')">
+              <div class="store-icon fusion"><i class="fa-regular fa-paint-brush"></i></div>
+              <div class="store-info">
+                <div class="store-name">西安开元潮牌店</div>
+                <div class="store-type"><span class="badge">店型C</span></div>
               </div>
               <div class="store-action"><i class="fa-regular fa-arrow-right"></i></div>
             </div>
           </div>
         </div>
-      </div>
     </div>
 
     <div class="footer">FILA 2026 · 内部巡店系统 · 数据仅供内部参考</div>
@@ -601,15 +641,38 @@
             area: '24万㎡',
             openDate: '2018年5月',
             data: 'nanmen-skp'
+          }
+        }
+      },
+      zhonglou: {
+        districtName: '钟楼商圈',
+        stores: {
+          kaiyuan: {
+            name: '西安开元店',
+            type: '店型A',
+            mallName: '开元商城',
+            location: '钟楼东南角',
+            area: '10.3万㎡',
+            openDate: '1996年6月',
+            data: 'zhonglou-kaiyuan'
           },
-          'wangfujing-d': {
-            name: '西安南门王府井',
-            type: '店型D',
-            mallName: '西安王府井百货',
-            location: '南门永宁门',
-            area: '8.6万㎡',
-            openDate: '2014年9月',
-            data: 'nanmen-wangfujing'
+          'kaiyuan-kids': {
+            name: '西安开元kids店',
+            type: '店型B',
+            mallName: '开元商城',
+            location: '钟楼东南角',
+            area: '10.3万㎡',
+            openDate: '1996年6月',
+            data: 'zhonglou-kaiyuan'
+          },
+          'kaiyuan-chaopai': {
+            name: '西安开元潮牌店',
+            type: '店型C',
+            mallName: '开元商城',
+            location: '钟楼东南角',
+            area: '10.3万㎡',
+            openDate: '1996年6月',
+            data: 'zhonglou-kaiyuan'
           }
         }
       }
@@ -734,6 +797,47 @@
           '7-8F：特色餐饮、SKP国际影城',
           '9F：真冰滑冰场、健身中心'
         ]
+      },
+      'zhonglou-kaiyuan': {
+        intro: '西安开元商城位于钟楼东南角，前身是1956年创建的解放百货商场，1996年6月一期工程竣工营业。建筑面积10.3万㎡，总投资约5.3亿元。经营国内外知名品牌2000余个，经营品种16万余种。是西安历史最悠久、最具标志性的商业地标之一，陕西省和西安市商贸行业的龙头企业、全国商业百强企业。',
+        features: [
+          '西安历史最悠久的商业地标，开业20余年',
+          '钟楼东南角绝版区位，与钟楼交相辉映',
+          '融古典与现代风格为一体的标志性建筑',
+          '高化品牌阵容与SKP、赛格旗鼓相当',
+          '天台观景平台成为"钟楼合影绝佳打卡地"'
+        ],
+        overview: {
+          info: '西安解放集团旗下，全国商业百强企业',
+          highlight: '10.3',
+          highlightUnit: '万㎡',
+          highlightDesc: '建筑面积，经营2000+国内外知名品牌'
+        },
+        transport: {
+          lines: '地铁2号线钟楼站直达',
+          bus: '钟楼站20+条公交线路',
+          road: '东大街解放市场6号，钟楼东南角',
+          tags: ['钟楼', '东大街', '南大街', '旅游核心区', '古城中心']
+        },
+        architecture: '融古典与现代风格为一体的建筑造型，退台式结构设计（5、6、8层退台），配备中央空调、双向自动扶梯、观光电梯等现代化设施。其新颖独特、气势恢弘的造型构成新西安一道靓丽的风景线。',
+        mix: [
+          { label: '零售百货', pct: 70, color: 'cyan' },
+          { label: '餐饮', pct: 18, color: 'orange' },
+          { label: '体验', pct: 12, color: 'green' }
+        ],
+        brands: ['Lancôme', 'Estée Lauder', 'Dior', 'CHANEL', 'SK-II', '周大福', '周生生', 'FILA', 'Nike', 'Adidas', '华为', '小米', '海底捞', '喜茶', '星巴克'],
+        groupBrands: ['FILA斐乐', '安踏', '迪桑特', '可隆'],
+        floors: [
+          'B2层：家电数码、开元超市、土特产',
+          'B1层：男女皮鞋、皮具箱包、休闲鞋',
+          '1F：珠宝首饰、名表眼镜、化妆品',
+          '2F：男士西装、休闲装、衬衫夹克',
+          '3F：职业女装、淑女装、休闲女装',
+          '4F：少女装、内衣、家居服',
+          '5F：运动户外、牛仔裤、儿童世界',
+          '6F：羽绒服、工艺品、办公用品',
+          '7F：美食娱乐广场'
+        ]
       }
     };
 
@@ -759,7 +863,8 @@
     }
 
     function selectDistrict(district) {
-      const panelId = district === 'xiaozhai' ? 'panelStoresXiaozhai' : 'panelStoresNanmen';
+      const panelMap = { xiaozhai: 'panelStoresXiaozhai', nanmen: 'panelStoresNanmen', zhonglou: 'panelStoresZhonglou' };
+      const panelId = panelMap[district];
       document.getElementById('step1').classList.remove('active');
       document.getElementById('step2').classList.add('active');
       document.getElementById('stepLine').classList.add('active');
